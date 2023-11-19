@@ -10,7 +10,7 @@ Pada proyek ini dibuat sistem rekomendasi Tourism Indonesia, yang bertujuan untu
 
 ## Business Understanding
 ### Problem Statement
-- Bagaiamana sistem rekomendasi yang baik untuk proyek sistem rekomendasi ini?
+- Bagaimana sistem rekomendasi yang baik untuk proyek sistem rekomendasi ini?
 - Bagaimana cara membuat sistem rekomendasi untuk Tourism Indonesia?
 ### Goals
 - Mengetahui sistem rekomendasi yang baik untuk proyek sistem rekomendasi.
@@ -158,9 +158,6 @@ $$
 \[ \text{Cosine Similarity}(A, B) = \frac{A \cdot B}{\|A\| \cdot \|B\|} \]
 $$
 
-## Evaluation
-Pada bagian evaluasi diberikan 3 sample yang akan direkomendasikan yaitu Candi Sewu, NuArt Sclupture Park, dan Pantai Marina. Dari sistem rekomendasi yang digunakan didapatkan output sebagai berikut.
-
 Tabel 10. Hasil rekomendasi dari "Candi Sewu"
 Apabila pengguna menyukai 'Candi Sewu', 10 tempat berikut ini juga mungkin akan disukai: 
 
@@ -177,6 +174,7 @@ Apabila pengguna menyukai 'Candi Sewu', 10 tempat berikut ini juga mungkin akan 
 |8|Monumen Yogya Kembali|Budaya|Yogyakarta|
 |9|Tugu Muda Semarang|Budaya|Semarang|
 
+## Top-N Recommendation
 Tabel 11. Hasil Rekomendasi dari "NuArt Sclupture Park"
 Apabila pengguna menyukai 'NuArt Sculpture Park', 10 tempat berikut ini juga mungkin akan disukai: 
 
@@ -208,6 +206,9 @@ Apabila pengguna menyukai 'Pantai Marina', 10 tempat berikut ini juga mungkin ak
 |7|Pantai Indrayanti|Bahari|Yogyakarta|
 |8|Pantai Congot|Bahari|Yogyakarta|
 |9|Pantai Sanglen|Bahari|Yogyakarta|
+
+## Evaluation
+Pada bagian evaluasi diberikan 3 sample yang akan direkomendasikan yaitu Candi Sewu, NuArt Sclupture Park, dan Pantai Marina.
 
 Dengan menggunakan _recommender system precision_
 
