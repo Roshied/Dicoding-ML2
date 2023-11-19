@@ -48,6 +48,8 @@ Tabel 2. info data id
 | 9   | Lat           | 437 non-null    | float64 |
 | 10  | Long          | 437 non-null    | float64 |
 
+Pada data id yang merupakan data dari informasi mengenai tempat wisata seperti Place_Id, Place_Name,	Description,	Category,	City,	Price	Rating,	Time_Minutes,	Coordinate,	Lat, dan	Long.
+
 Tabel 3. data rating
 |index|User\_Id|Place\_Id|Place\_Ratings|
 |---|---|---|---|
@@ -66,6 +68,8 @@ Tabel 4. info data rating
 | 1   | Place_Id      | 10000 non-null | int64 |
 | 2   | Place_Ratings | 10000 non-null | int64 |
 
+Pada data rating merupakan data rating tiap user mengenai tempat wisata pada data id yang sesuai dengan kolom Place_id. Beberapa data yang terdapat pada data rating adalah User_Id, Place_Id, dan Place_ratings.
+
 Tabel 5. data user
 |index|User\_Id|Location|Age|
 |---|---|---|---|
@@ -82,6 +86,8 @@ Tabel 6. info data users
 | 1   | Location  | 300 non-null    | object |
 | 2   | Age       | 300 non-null    | int64  |
 
+Pada data user didapatkan data mengenai informasi pengguna seperi User_Id, Location, dan Age.
+
 ### Visualisasi Data
 dataframe pada tourism_rating dan tourism_with_id disatukan menjadi
 Tabel 7. Data yang telah disatukan
@@ -92,27 +98,32 @@ Tabel 7. Data yang telah disatukan
 |2|1|5|5|Atlantis Water Adventure|Jakarta|Taman Hiburan|
 |3|1|373|3|Museum Kereta Ambarawa|Semarang|Budaya|
 |4|1|101|4|Kampung Wisata Sosro Menduran|Yogyakarta|Budaya|
+Pada tabel 7 merupakan hasil penggabungan data rating dan data id yang disesuaikan dengan Place_Id pada masing-masing data. Data ini kemudian akan dikelola untuk melakukan data preparation.
 
-Kemudian dibentuk grafik jumlah tiap-tiap fitur numerik seperti categort, city, dan rating
+Pada tabel yang telah disatukan kemudian, dibentuk grafik jumlah tiap-tiap fitur numerik seperti categort, city, dan rating
 - Grafik Category
   
 ![image](https://github.com/Roshied/Dicoding-ML2/assets/68040731/f0db0242-1c5e-44b8-a362-c8e52b0f68f4)
 
+Pada grafik category dapat diketahui terdapat banyak data mengenai taman hiburan dan terdapat paling sedikit data tempat imbadah.
 Gambar 1. grafik jumlah category pada data
 - Grafik City
 
 ![image](https://github.com/Roshied/Dicoding-ML2/assets/68040731/7fc1559f-a323-4b22-9718-1137b5db56f8)
 
+Pada grafik city dapat diketahui data yogyakarta meruapakan data terbanyak dan surabaya merupakan data terkecil.
 Gambar 2. grafik jumlah city pada data
 - Grafik rating
 
 ![image](https://github.com/Roshied/Dicoding-ML2/assets/68040731/0cc0e3c2-1191-4f91-920c-a25933ae8aab)
 
 Gambar 3. grafik jumlah rating pada data
+Pada grafik rating, rating 2-4 memiliki jumlah data yang relatif sama dan rating 1 merupakan data yang paling sedikit.
 
 ## Data Preparation
 ### Missing Value
 Setelah proses penggabungan, dilakukan pengecekan terhadap data yang memiliki missing value. Pengecekan missing value dilakukan untuk mengidentifikasi apakah terdapat nilai-nilai yang hilang atau tidak lengkap dalam dataset. Missing value dapat muncul karena berbagai alasan seperti kesalahan input. Menghapus missing value dapat membantu mengurangi error dalam pemodelan nantinya.
+
 ### Duplicate
 Selanjutnya, Data yang digunakan adalah data unik yang dimasukkan ke dalam proses pemodelan. Oleh karena itu, penghapusan data yang duplikat dengan fungsi **drop_duplicates()**.
 Tabel 8. Data tanpa duplicate
@@ -123,6 +134,7 @@ Tabel 8. Data tanpa duplicate
 |2|1|5|5|Atlantis Water Adventure|Jakarta|Taman Hiburan|
 |3|1|373|3|Museum Kereta Ambarawa|Semarang|Budaya|
 |4|1|101|4|Kampung Wisata Sosro Menduran|Yogyakarta|Budaya|
+
 ### Konversi data menjadi list
 Tabel 9. Konversi menjadi list
 |index|user\_id|place\_id|place\_ratings|place\_name|city|category|
@@ -132,8 +144,10 @@ Tabel 9. Konversi menjadi list
 |2|1|5|5|Atlantis Water Adventure|Jakarta|Taman Hiburan|
 |3|1|373|3|Museum Kereta Ambarawa|Semarang|Budaya|
 |4|1|101|4|Kampung Wisata Sosro Menduran|Yogyakarta|Budaya|
+
 ## TF-IDF Vectorizer
 Pada tahap ini, membangun sistem rekomendasi sederhana berdasarkan category dari tempat tourism. Teknik ini digunakan pada sistem rekomendasi untuk menemukan representasi fitur penting dari setiap kategori.
+
 ## Modeling and Result
 Setelah dilakukkan data preparation, dilakukan pemodelan dengan menggunakan cosine similarity.
 ### Cosine Similarity
@@ -145,24 +159,63 @@ $$
 $$
 
 ## Evaluation
-Pada evaluasi metrik yang digunakan pada model cosine similarity adalah dengan mengevaluasi presisi (precision), recall, dan F1-score untuk matriks kemiripan biner. Metrik-metrik ini umumnya digunakan dalam masalah klasifikasi biner, dan mereka mengevaluasi kinerja model dalam hal prediksi benar positif (TP), salah positif (FP), salah negatif (FN), dan benar negatif (TN).
-dengan output:
+Pada bagian evaluasi diberikan 3 sample yang akan direkomendasikan yaitu Candi Sewu, NuArt Sclupture Park, dan Pantai Marina. Dari sistem rekomendasi yang digunakan didapatkan output sebagai berikut.
 
-Tabel 10. Metrik evaluasi cosine similarity
-|   | Precision | Recall | F1-Score |
-|---|-----------|--------|----------|
-| 0 | 1.0       | 1.0    | 1.0      |
-| 1 | 1.0       | 1.0    | 1.0      |
-| 2 | 1.0       | 1.0    | 1.0      |
-| 3 | 1.0       | 1.0    | 1.0      |
-| 4 | 1.0       | 1.0    | 1.0      |
-|...| ...       | ...    | ...      |
-| 432 | 1.0     | 1.0    | 1.0      |
-| 433 | 1.0     | 1.0    | 1.0      |
-| 434 | 1.0     | 1.0    | 1.0      |
-| 435 | 1.0     | 1.0    | 1.0      |
-| 436 | 1.0     | 1.0    | 1.0      |
+Tabel 10. Hasil rekomendasi dari "Candi Sewu"
+Apabila pengguna menyukai 'Candi Sewu', 10 tempat berikut ini juga mungkin akan disukai: 
+
+|index|place\_name|category|city|
+|---|---|---|---|
+|0|Candi Ratu Boko|Budaya|Yogyakarta|
+|1|Istana Negara Republik Indonesia|Budaya|Jakarta|
+|2|Museum Nike Ardilla|Budaya|Bandung|
+|3|Jalan Braga|Budaya|Bandung|
+|4|Museum Benteng Vredeburg Yogyakarta|Budaya|Yogyakarta|
+|5|Monumen Selamat Datang|Budaya|Jakarta|
+|6|Museum Pendidikan Nasional|Budaya|Bandung|
+|7|Taman Film|Budaya|Bandung|
+|8|Monumen Yogya Kembali|Budaya|Yogyakarta|
+|9|Tugu Muda Semarang|Budaya|Semarang|
+
+Tabel 11. Hasil Rekomendasi dari "NuArt Sclupture Park"
+Apabila pengguna menyukai 'NuArt Sculpture Park', 10 tempat berikut ini juga mungkin akan disukai: 
+
+|index|place\_name|category|city|
+|---|---|---|---|
+|0|Bendung Lepen|Taman Hiburan|Yogyakarta|
+|1|Kawasan Punclut|Taman Hiburan|Bandung|
+|2|Atlantis Land Surabaya|Taman Hiburan|Surabaya|
+|3|Bumi Perkemahan Cibubur|Taman Hiburan|Jakarta|
+|4|Stone Garden Citatah|Taman Hiburan|Bandung|
+|5|Blue Lagoon Jogja|Taman Hiburan|Yogyakarta|
+|6|Trans Studio Bandung|Taman Hiburan|Bandung|
+|7|Waterboom PIK \(Pantai Indah Kapuk\)|Taman Hiburan|Jakarta|
+|8|Hutan Pinus Pengger|Taman Hiburan|Yogyakarta|
+|9|Sumur Gumuling|Taman Hiburan|Yogyakarta|
+
+Tabel 12.  Hasil Rekomendasi dari "Pantai marina"
+Apabila pengguna menyukai 'Pantai Marina', 10 tempat berikut ini juga mungkin akan disukai:
+
+|index|place\_name|category|city|
+|---|---|---|---|
+|0|Pantai Ngrenehan|Bahari|Yogyakarta|
+|1|Pantai Parangtritis|Bahari|Yogyakarta|
+|2|Pantai Pulang Sawal|Bahari|Yogyakarta|
+|3|Pantai Krakal|Bahari|Yogyakarta|
+|4|Pantai Drini|Bahari|Yogyakarta|
+|5|Pantai Ancol|Bahari|Jakarta|
+|6|Pulau Semak Daun|Bahari|Jakarta|
+|7|Pantai Indrayanti|Bahari|Yogyakarta|
+|8|Pantai Congot|Bahari|Yogyakarta|
+|9|Pantai Sanglen|Bahari|Yogyakarta|
+
+Dengan menggunakan _recommender system precision_
+
+$$ \text{Precision} = \frac{\text{Jumlah item yang direkomendasikan yang relevan}}{\text{Total jumlah item yang direkomendasikan}} $$
+
+Pada 3 sampel diatas masing-masing mendapatkan 10 jumlah item yang relevan sehingga nilai skor precision menggunakan content-based filtering didapatkan (10/10)*100% didapatkan 100%
 
 ## Reference
-Dwitama, E. (2018). PENGEMBANGAN OBJEK WISATA DANAU LINTING SEBAGAI DAYA TARIK WISATA DI KABUPATEN DELI SERDANG SUMATERA UTARA PENGEMBANGAN OBJEK WISATA DANAU LINTING SEBAGAI DAYA TARIK WISATA DI KABUPATEN DELI SERDANG SUMATERA UTARA (Doctoral dissertation, Sekolah Tinggi Pariwisata Ambarrukmo (STIPRAM) Yogyakarta).
-Asmara, R., Prasetyaningrum, I., & Rahmawati, S. Z. (2019). Penyusunan Itinerary Otomatis Tempat Wisata Jatim Menggunakan Google Maps Dan Multitransportasi. INOVTEK Polbeng-Seri Informatika, 4(2), 179-192.
+- Dwitama, E. (2018). PENGEMBANGAN OBJEK WISATA DANAU LINTING SEBAGAI DAYA TARIK WISATA DI KABUPATEN DELI SERDANG SUMATERA UTARA PENGEMBANGAN OBJEK WISATA DANAU LINTING SEBAGAI DAYA TARIK WISATA DI KABUPATEN DELI SERDANG SUMATERA UTARA (Doctoral dissertation, Sekolah Tinggi Pariwisata Ambarrukmo (STIPRAM) Yogyakarta).
+
+- Asmara, R., Prasetyaningrum, I., & Rahmawati, S. Z. (2019). Penyusunan Itinerary Otomatis Tempat Wisata Jatim Menggunakan Google Maps Dan Multitransportasi. INOVTEK Polbeng-Seri Informatika, 4(2), 179-192.
