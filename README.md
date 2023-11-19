@@ -158,6 +158,8 @@ $$
 \[ \text{Cosine Similarity}(A, B) = \frac{A \cdot B}{\|A\| \cdot \|B\|} \]
 $$
 
+## Top-N Recommendation
+
 Tabel 10. Hasil rekomendasi dari "Candi Sewu"
 Apabila pengguna menyukai 'Candi Sewu', 10 tempat berikut ini juga mungkin akan disukai: 
 
@@ -174,7 +176,6 @@ Apabila pengguna menyukai 'Candi Sewu', 10 tempat berikut ini juga mungkin akan 
 |8|Monumen Yogya Kembali|Budaya|Yogyakarta|
 |9|Tugu Muda Semarang|Budaya|Semarang|
 
-## Top-N Recommendation
 Tabel 11. Hasil Rekomendasi dari "NuArt Sclupture Park"
 Apabila pengguna menyukai 'NuArt Sculpture Park', 10 tempat berikut ini juga mungkin akan disukai: 
 
@@ -214,7 +215,13 @@ Dengan menggunakan _recommender system precision_
 
 $$ \text{Precision} = \frac{\text{Jumlah item yang direkomendasikan yang relevan}}{\text{Total jumlah item yang direkomendasikan}} $$
 
-Pada 3 sampel diatas masing-masing mendapatkan 10 jumlah item yang relevan sehingga nilai skor precision menggunakan content-based filtering didapatkan (10/10)*100% didapatkan 100%
+Dari Hasil Rekomendasi dari "Candi Sewu", diketahui bahwa Candi Sewu termasuk dalam kategori Budaya. Dari 10 Tempat wisata yang direkomendasikan, 10 tempat wisata memiliki kategori Budaya (similar). Artinya, precision sistem didapatkan 10/10 atau 100%
+
+Dari Hasil Rekomendasi dari "NuArt Sclupture Park", diketahui bahwa NuArt Sclupture Park termasuk dalam kategori Taman Hiburan. Dari 10 Tempat wisata yang direkomendasikan, 10 tempat wisata memiliki kategori taman hiburan (similar). Artinya, precision sistem didapatkan 10/10 atau 100%
+
+Dari Hasil Rekomendasi dari "Pantai marina", diketahui bahwa Pantai marina termasuk dalam kategori Bahari. Dari 10 Tempat wisata yang direkomendasikan, 10 tempat wisata memiliki kategori Bahari (similar). Artinya, precision sistem didapatkan 10/10 atau 100%
+
+Dari 3 percobaan tersebut masing-masing mendapatkan presisi sebesar 100%
 
 ## Reference
 - Dwitama, E. (2018). PENGEMBANGAN OBJEK WISATA DANAU LINTING SEBAGAI DAYA TARIK WISATA DI KABUPATEN DELI SERDANG SUMATERA UTARA PENGEMBANGAN OBJEK WISATA DANAU LINTING SEBAGAI DAYA TARIK WISATA DI KABUPATEN DELI SERDANG SUMATERA UTARA (Doctoral dissertation, Sekolah Tinggi Pariwisata Ambarrukmo (STIPRAM) Yogyakarta).
